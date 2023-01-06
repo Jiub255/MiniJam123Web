@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class EnemyDamage : MonoBehaviour
 {
-    private Transform player;
+/*    private Transform player;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    }*/
 
-    public void CheckForPlayer()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Vector3.Distance(transform.position, player.position) < 0.5f)
+        if (collision.CompareTag("Player"))
         {
             KillPlayer();
         }
@@ -25,4 +25,14 @@ public class EnemyDamage : MonoBehaviour
         Debug.Log("Killed by spider");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+
+
+/*    public void CheckForPlayer()
+    {
+        if (Vector3.Distance(transform.position, player.position) < 0.5f)
+        {
+            KillPlayer();
+        }
+    }*/
 }

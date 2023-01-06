@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 340503869066489471}
   - component: {fileID: 340503869066489470}
   - component: {fileID: 6693051496477489958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UpDownWeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 340503869498070313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Up Down Web
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8160058659824807230}
   - component: {fileID: 8160058659824807231}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UpDownWeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8160058661330575098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Up Down Sticky Web
   m_TagString: Untagged
   m_Icon: {fileID: 0}

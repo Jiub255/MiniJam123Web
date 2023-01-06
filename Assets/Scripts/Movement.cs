@@ -7,6 +7,17 @@ public class Movement : MonoBehaviour
 	[SerializeField]
 	private float moveDuration = 0.2f;
 	private bool moving;
+    private Rigidbody2D rb;
+    [SerializeField]
+    private LayerMask webLayer;
+    private LevelGenerator levelGenerator;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        levelGenerator = FindObjectOfType<LevelGenerator>();
+        transform.position = new Vector3(Mathf.RoundToInt(levelGenerator.width / 2), transform.position.y, 0);
+    }
 
     private void Update()
     {
@@ -42,7 +53,8 @@ public class Movement : MonoBehaviour
 
         while (elapsedTime < moveDuration)
         {
-            transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime/moveDuration));
+            //transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime/moveDuration));
+            rb.MovePosition(Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / moveDuration)));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -52,7 +64,7 @@ public class Movement : MonoBehaviour
         moving = false;
 
         // Did you just run through a sticky web?
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -direction, 1f); 
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -direction, 1f, webLayer); 
         if (hit.collider == null)
         {
             // Die from sticky web/getting eaten by spiders.

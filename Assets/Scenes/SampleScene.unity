@@ -152,16 +152,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d04ca61567b4443accca6e7ca4106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 25
-  height: 75
-  maxPathLength: 3
-  minPathLength: 1
+  width: 20
+  height: 30
+  minPathLength: 3
+  maxPathLength: 5
+  numberOfSpiders: 15
+  spiderPrefab: {fileID: 2485312763761172411, guid: b9196aba9f8ef394d99d03eb206a13e2, type: 3}
   upDownPrefab: {fileID: 340503869498070358, guid: ed546bd93a65ca04c88c7dc92df889c3, type: 3}
   upDownStickyPrefab: {fileID: 8160058661330575097, guid: a44f18cd5f3f9f746a02a00b3c10654e, type: 3}
   leftRightPrefab: {fileID: 6212890431303990449, guid: 9b7edd63b1f4b824b9ae9cec39190e2f, type: 3}
   leftRightStickyPrefab: {fileID: 2381919735684210660, guid: 6d77259b86c876345a2604a0d9bada77, type: 3}
-  spiderPrefab: {fileID: 2485312763761172411, guid: b9196aba9f8ef394d99d03eb206a13e2, type: 3}
-  numberOfSpiders: 10
 --- !u!4 &813273887
 Transform:
   m_ObjectHideFlags: 0
@@ -184,22 +184,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5152125651022406451, guid: 62f993424bd52f94f8cc25270d129e0f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4727097ce75e11246b8f9a5fb63dd0af, type: 3}
-    - target: {fileID: 5152125651022406451, guid: 62f993424bd52f94f8cc25270d129e0f, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152125651022406451, guid: 62f993424bd52f94f8cc25270d129e0f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152125651022406451, guid: 62f993424bd52f94f8cc25270d129e0f, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5152125651970910409, guid: 62f993424bd52f94f8cc25270d129e0f, type: 3}
       propertyPath: m_RootOrder
       value: 1

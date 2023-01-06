@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6212890431303990454}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left Right Web
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6212890432398190361}
   - component: {fileID: 6212890432398190366}
   - component: {fileID: 1967268604990309407}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftRightWeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

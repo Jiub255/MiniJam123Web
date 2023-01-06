@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-	[SerializeField]
-	private int width = 20;
-
-	//private int safeX;
-
+	//[SerializeField]
+	public int width = 20;
 	[SerializeField]
 	private int height = 40;
 
 	[SerializeField]
-	private int maxPathLength = 5;
-	[SerializeField]
 	private int minPathLength = 1;
+	[SerializeField]
+	private int maxPathLength = 5;
+
+    [SerializeField]
+    private int numberOfSpiders = 10;
+    [SerializeField]
+    private GameObject spiderPrefab;
 
 	[SerializeField]
 	private GameObject upDownPrefab;
@@ -25,11 +27,6 @@ public class LevelGenerator : MonoBehaviour
 	private GameObject leftRightPrefab;
 	[SerializeField]
 	private GameObject leftRightStickyPrefab;
-
-    [SerializeField]
-    private GameObject spiderPrefab;
-    [SerializeField]
-    int numberOfSpiders = 10;
 
     private void Start()
     {

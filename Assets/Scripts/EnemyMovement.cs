@@ -13,12 +13,14 @@ public class EnemyMovement : MonoBehaviour
 
     private bool moving;
     private Transform player;
-    private EnemyDamage enemyDamage;
+  //  private EnemyDamage enemyDamage;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemyDamage = GetComponent<EnemyDamage>();
+      //  enemyDamage = GetComponent<EnemyDamage>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -69,7 +71,8 @@ public class EnemyMovement : MonoBehaviour
 
         while (elapsedTime < moveDuration)
         {
-            transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / moveDuration));
+            //transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / moveDuration));
+            rb.MovePosition(Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / moveDuration)));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -78,6 +81,6 @@ public class EnemyMovement : MonoBehaviour
 
         moving = false;
 
-        enemyDamage.CheckForPlayer();
+       // enemyDamage.CheckForPlayer();
     }
 }
