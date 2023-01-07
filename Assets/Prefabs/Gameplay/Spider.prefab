@@ -93,10 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2485312763761172410}
-  - component: {fileID: 2485312763761172409}
-  - component: {fileID: 2485312763761172408}
   - component: {fileID: 194055301421532583}
   - component: {fileID: 5783848055873535926}
+  - component: {fileID: 2485312763761172409}
+  - component: {fileID: 2485312763761172408}
+  - component: {fileID: 2450637894673595265}
   m_Layer: 6
   m_Name: Spider
   m_TagString: Enemy
@@ -120,32 +121,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2485312763761172409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2485312763761172411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f6dda8a98936741a6d1cfd7dacc098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDuration: 0.5
-  chaseRadius: 10
---- !u!114 &2485312763761172408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2485312763761172411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f98d017e94cf4747ae8b86df0a58563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &194055301421532583
 Rigidbody2D:
   serializedVersion: 4
@@ -183,3 +158,45 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &2485312763761172409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485312763761172411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f6dda8a98936741a6d1cfd7dacc098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDuration: 0.5
+  chaseRadius: 10
+--- !u!114 &2485312763761172408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485312763761172411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f98d017e94cf4747ae8b86df0a58563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2450637894673595265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485312763761172411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3c977ee9e4354469a698302ca3fa90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootTimerLength: 7
+  shootInnerRadius: 5
+  shootOuterRadius: 9
+  venomPrefab: {fileID: 6986417533756289866, guid: 3e467353d5a7733408649f847424165b, type: 3}

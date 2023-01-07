@@ -449,3 +449,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3178184276137970679, guid: 28b365424794b964bb91ba688bae8205, type: 3}
   numberToPool: 25
+  pooledBullets: []

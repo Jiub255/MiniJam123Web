@@ -32,13 +32,13 @@ public class Shooter : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
+        //Debug.Log("Shoot");
 
         GameObject bullet;
 
         if (pooledBullets.Count > 0)
         {
-            Debug.Log("Pulled bullet from pool");
+            //Debug.Log("Pulled bullet from pool");
             bullet = pooledBullets[0];
             pooledBullets.RemoveAt(0);
             bullet.SetActive(true);
@@ -46,7 +46,7 @@ public class Shooter : MonoBehaviour
         }
         else
         {
-            Debug.Log("Instantiated bullet");
+            //Debug.Log("Instantiated bullet");
             bullet = Instantiate(bulletPrefab);
             bullet.transform.position = transform.position;
         }
