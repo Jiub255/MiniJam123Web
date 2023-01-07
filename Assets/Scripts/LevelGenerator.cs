@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-	public int width = 20;
-	[SerializeField]
-	private int height = 40;
+    public int width = 20;
+    public int height = 40;
 
 	[SerializeField]
 	private int minPathLength = 1;

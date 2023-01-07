@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class Bullet : MonoBehaviour
     private bool launched = false;
 
     private Shooter shooter;
+
+    public static event Action onSpiderKilled;
 
     private void Awake()
     {
@@ -57,6 +60,7 @@ public class Bullet : MonoBehaviour
         {
             // Kill spider
             Destroy(collision.gameObject);
+            onSpiderKilled?.Invoke();
 
             // Put back in pool
             lifetime = 1.5f;

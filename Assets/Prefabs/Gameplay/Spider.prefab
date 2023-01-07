@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f6dda8a98936741a6d1cfd7dacc098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDuration: 0.5
+  moveDuration: 0.3
   chaseRadius: 10
 --- !u!114 &2485312763761172408
 MonoBehaviour:

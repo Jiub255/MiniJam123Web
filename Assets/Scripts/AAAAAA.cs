@@ -3,17 +3,17 @@ public class AAAAAA
   
 
     TODO: 
-    
-    Add shoot function to player and spiders
 
-    Make final level center of web background
-    Make final boss spider
+    Score = spidersKilled / timeToCompleteLevel
+
+    Basic HUD
 
     Death screen
     
     Win screen
-
-    Score = spidersKilled / timeToCompleteLevel
+    
+    Make final level center of web background
+    Make final boss spider
 
 
 
