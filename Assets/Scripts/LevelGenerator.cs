@@ -28,6 +28,10 @@ public class LevelGenerator : MonoBehaviour
     {
         MakeStickyGrid();
         MakePath();
+        MakePath();
+        MakePath();
+        MakePath();
+        MakePath();
         SprinkleWithSpiders(numberOfSpiders);
     }
     

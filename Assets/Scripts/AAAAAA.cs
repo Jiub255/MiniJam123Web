@@ -4,7 +4,7 @@ public class AAAAAA
 
     TODO: 
 
-    Score = spidersKilled / timeToCompleteLevel
+    High score screen. Make it online?
 
     Basic HUD
 
