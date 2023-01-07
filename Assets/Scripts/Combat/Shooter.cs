@@ -4,10 +4,14 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     [SerializeField]
+    private float shootTimerLength = 1f;
+    private float timer = 1.01f;
+
+    [SerializeField]
     private GameObject bulletPrefab;
 
     [SerializeField]
-    private int numberToPool = 25;
+    private int numberToPool = 10;
 
     public List<GameObject> pooledBullets = new List<GameObject>();
 
@@ -20,12 +24,13 @@ public class Shooter : MonoBehaviour
             instance.SetActive(false);
             pooledBullets.Add(instance);
         }
-        //Debug.Log("Populated pool");
     }
 
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+    {  
+        timer += Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.Mouse0) && timer > shootTimerLength)
         {
             Shoot();
         }
@@ -33,13 +38,12 @@ public class Shooter : MonoBehaviour
 
     private void Shoot()
     {
-        //Debug.Log("Shoot");
+        timer = 0f;
 
         GameObject bullet;
 
         if (pooledBullets.Count > 0)
         {
-            //Debug.Log("Pulled bullet from pool");
             bullet = pooledBullets[0];
             pooledBullets.RemoveAt(0);
             bullet.SetActive(true);
@@ -47,7 +51,6 @@ public class Shooter : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Instantiated bullet");
             bullet = Instantiate(bulletPrefab);
             bullet.transform.position = transform.position;
         }

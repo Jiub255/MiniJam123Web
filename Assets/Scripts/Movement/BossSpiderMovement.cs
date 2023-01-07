@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Maybe have a giant spider face as wide as the screen chase you downwards? Kinda contra-like.
 public class BossSpiderMovement : MonoBehaviour
 {
     [SerializeField]
@@ -28,6 +29,13 @@ public class BossSpiderMovement : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.position);
         
+        if (!moving && distance < chaseRadius)
+        {
+
+        }
+
+/*        
+        
         if (!moving && distance > 0.5f && distance < chaseRadius)
         {
             List<Vector2> possibleDirections = new List<Vector2>();
@@ -45,7 +53,7 @@ public class BossSpiderMovement : MonoBehaviour
 
             int randomInt = Random.Range(0, possibleDirections.Count);
             StartCoroutine(MoveDirection(possibleDirections[randomInt]));
-        }
+        }*/
     }
 
     private IEnumerator MoveDirection(Vector3 direction)

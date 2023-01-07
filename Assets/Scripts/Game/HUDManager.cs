@@ -11,15 +11,21 @@ public class HUDManager : MonoBehaviour
 	private TextMeshProUGUI spidersKilledText;
 	[SerializeField]
 	private TextMeshProUGUI timeText;
+	[SerializeField]
+	private TextMeshProUGUI winText;
+	[SerializeField]
+	private TextMeshProUGUI deathText;
 
 	[SerializeField]
 	private GameObject hudCanvas;
 	[SerializeField]
 	private GameObject winCanvas;
 	[SerializeField]
-	private TextMeshProUGUI winText;
+	private GameObject deathCanvas;
 
+	[HideInInspector]
 	public float timer = 0f;
+	[HideInInspector]
 	public int spidersKilled = 0;
 
 	[SerializeField]
@@ -46,17 +52,21 @@ public class HUDManager : MonoBehaviour
     private void OnEnable()
     {
 		Bullet.onSpiderKilled += UpdateScore;
-		//Bullet.onHitBoss += UpdateBossHealth;
-		BossHealth.onWin += OpenWinScreen;
 		Movement.onBossLevel += OpenBossHealthHUD;
+		BossHealth.onWin += OpenWinScreen;
+		Movement.onDeath += OpenDeathScreen;
+		Venom.onDeath += OpenDeathScreen;
+		EnemyDamage.onDeath += OpenDeathScreen;
     }
 
     private void OnDisable()
     {
 		Bullet.onSpiderKilled -= UpdateScore;
-		//Bullet.onHitBoss -= UpdateBossHealth;
-		BossHealth.onWin -= OpenWinScreen;
 		Movement.onBossLevel -= OpenBossHealthHUD;
+		BossHealth.onWin -= OpenWinScreen;
+		Movement.onDeath -= OpenDeathScreen;
+		Venom.onDeath -= OpenDeathScreen;
+		EnemyDamage.onDeath -= OpenDeathScreen;
 	}
 
     private void Start()
@@ -113,6 +123,14 @@ public class HUDManager : MonoBehaviour
 		hudCanvas.SetActive(false);
 		winCanvas.SetActive(true);
 		winText.text = "You Win!\nScore: " + CalculateScore();
+		Time.timeScale = 0f;
+    }
+
+	private void OpenDeathScreen(string deathMessage)
+    {
+		hudCanvas.SetActive(false);
+		deathCanvas.SetActive(true);
+		deathText.text = "You died!\n" + deathMessage;
 		Time.timeScale = 0f;
     }
 

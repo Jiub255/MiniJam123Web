@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ public class Venom : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool launched = false;
+
+    public static event Action<string> onDeath;
 
     private void Awake()
     {
@@ -42,7 +45,9 @@ public class Venom : MonoBehaviour
     private void KillPlayer()
     {
         Debug.Log("Killed by venom");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        onDeath?.Invoke("Killed by venom");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Launch(Vector2 targetPosition)

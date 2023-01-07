@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     private LevelGenerator levelGenerator;
 
     public static event Action onBossLevel;
+    public static event Action<string> onDeath;
 
     private void Awake()
     {
@@ -73,7 +74,9 @@ public class Movement : MonoBehaviour
         {
             // Die from sticky web/getting eaten by spiders.
             Debug.Log("Killed by web");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            onDeath?.Invoke("Killed by web");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if (transform.position.y >= levelGenerator.height)
