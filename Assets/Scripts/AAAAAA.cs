@@ -1,6 +1,27 @@
 public class AAAAAA
 {/*---------------------------------------------------------------------------------------------------------------------------------
   
+
+    TODO: 
+    
+    Add shoot function to player and spiders
+
+    Make final level center of web background
+    Make final boss spider
+
+    Death screen
+    
+    Win screen
+
+    Score = spidersKilled / timeToCompleteLevel
+
+
+
+
+
+
+    ---------------------------------------------------------------------------
+
     There's a giant spider living inside of earth with its army.
     One day they break the earth so there's no ground and you fall into an earth sized web.
     You have to fight your way to the giant spider at the center to win.

@@ -16,7 +16,8 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         levelGenerator = FindObjectOfType<LevelGenerator>();
-        transform.position = new Vector3(Mathf.RoundToInt(levelGenerator.width / 2), transform.position.y, 0);
+        // Start at midpoint on the bottom for now
+        transform.position = new Vector3(Mathf.RoundToInt(levelGenerator.width / 2), 0, 0);
     }
 
     private void Update()
@@ -53,7 +54,6 @@ public class Movement : MonoBehaviour
 
         while (elapsedTime < moveDuration)
         {
-            //transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime/moveDuration));
             rb.MovePosition(Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / moveDuration)));
             elapsedTime += Time.deltaTime;
             yield return null;

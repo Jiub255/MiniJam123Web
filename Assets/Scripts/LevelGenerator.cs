@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-	//[SerializeField]
 	public int width = 20;
 	[SerializeField]
 	private int height = 40;
