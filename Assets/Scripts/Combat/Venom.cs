@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Venom : MonoBehaviour
 {
@@ -47,13 +46,10 @@ public class Venom : MonoBehaviour
         Debug.Log("Killed by venom");
 
         onDeath?.Invoke("Killed by venom");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Launch(Vector2 targetPosition)
     {
-        //Debug.Log("Launch to " + targetPosition);
-
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
 
         rb.AddForce(direction * speed, ForceMode2D.Impulse);

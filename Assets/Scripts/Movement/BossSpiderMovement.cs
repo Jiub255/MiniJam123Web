@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Maybe have a giant spider face as wide as the screen chase you downwards? Kinda contra-like.

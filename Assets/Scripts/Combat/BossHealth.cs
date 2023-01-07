@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossHealth : MonoBehaviour
@@ -28,7 +26,6 @@ public class BossHealth : MonoBehaviour
     private void GetHurt()
     {
         health--;
-        Debug.Log("Boss Health: " + health);
         if (health <= 0)
         {
             Die();

@@ -54,11 +54,11 @@ public class LevelGenerator : MonoBehaviour
         // Make safe row on top to start on
         for (int x = 0; x < width; x++)
         {
-            Instantiate(leftRightPrefab, new Vector3(x, (/*3 **/ -height) - 5, 0), Quaternion.identity);
+            Instantiate(leftRightPrefab, new Vector3(x, -height - 5, 0), Quaternion.identity);
         }
 
         // Instantiate boss spider
-        Instantiate(bossPrefab, new Vector3(Mathf.RoundToInt(width / 2),/* 3 * */-height, 0), Quaternion.identity);
+        Instantiate(bossPrefab, new Vector3(Mathf.RoundToInt(width / 2), -height, 0), Quaternion.identity);
     }
     
     private void MakeStickyGrid(int yOffset = 0)

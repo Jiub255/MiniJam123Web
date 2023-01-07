@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyDamage : MonoBehaviour
 {
@@ -19,7 +18,5 @@ public class EnemyDamage : MonoBehaviour
         Debug.Log("Killed by spider");
 
         onDeath?.Invoke("Killed by spider");
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

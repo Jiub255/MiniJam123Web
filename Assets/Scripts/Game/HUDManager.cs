@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System;
 using System.Collections;
 
 public class HUDManager : MonoBehaviour
@@ -84,15 +83,14 @@ public class HUDManager : MonoBehaviour
 		if (bossHealth != null)
         {
 			healthBarImage.fillAmount = Mathf.Clamp((float)bossHealth.health / (float)bossHealth.maxHealth, 0f, 1f);
-			Debug.Log("Fill amount: " + healthBarImage.fillAmount.ToString());
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 		UpdateBossHealth();
 
-		timer += Time.deltaTime;
+		timer += Time.fixedDeltaTime;
 
 		int minutes = Mathf.FloorToInt(timer / 60);
 		int seconds = Mathf.FloorToInt(timer) % 60;
@@ -145,6 +143,6 @@ public class HUDManager : MonoBehaviour
 
 	public int CalculateScore()
     {
-		return Mathf.RoundToInt(100 * (spidersKilled + 1) / timer);
+		return Mathf.RoundToInt(1000 * (spidersKilled + 1) / timer);
     }
 }

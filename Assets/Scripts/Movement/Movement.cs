@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -76,7 +75,6 @@ public class Movement : MonoBehaviour
             Debug.Log("Killed by web");
 
             onDeath?.Invoke("Killed by web");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if (transform.position.y >= levelGenerator.height)
@@ -90,7 +88,7 @@ public class Movement : MonoBehaviour
         // Warp to top of web
         transform.position = new Vector3(
             Mathf.RoundToInt(levelGenerator.width / 2),
-            (/*3 * */-levelGenerator.height) - 5,
+            (-levelGenerator.height) - 5,
             0);
 
         // turns on boss health hud in hudManager
