@@ -5,6 +5,9 @@ public class LevelGenerator : MonoBehaviour
     public int width = 20;
     public int height = 40;
 
+    [SerializeField]
+    private int numberOfPaths = 5;
+
 	[SerializeField]
 	private int minPathLength = 1;
 	[SerializeField]
@@ -13,7 +16,11 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private int numberOfSpiders = 10;
     [SerializeField]
+    private int bossNumberOfSpiders = 10;
+    [SerializeField]
     private GameObject spiderPrefab;
+    [SerializeField]
+    private GameObject bossPrefab;
 
 	[SerializeField]
 	private GameObject upDownPrefab;
@@ -26,23 +33,42 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
+        // First Level
         MakeStickyGrid();
-        MakePath();
-        MakePath();
-        MakePath();
-        MakePath();
-        MakePath();
         SprinkleWithSpiders(numberOfSpiders);
+
+        for (int i = 0; i < numberOfPaths; i++)
+        {
+            MakePath();
+        }
+
+        // Boss Level
+        MakeStickyGrid(height * -2);
+        SprinkleWithSpiders(bossNumberOfSpiders, height * -2);
+
+        for (int i = 0; i < numberOfPaths; i++)
+        {
+            MakePath(height * -2);
+        }
+
+        // Make safe row on top to start on
+        for (int x = 0; x < width; x++)
+        {
+            Instantiate(leftRightPrefab, new Vector3(x, (/*3 **/ -height) - 5, 0), Quaternion.identity);
+        }
+
+        // Instantiate boss spider
+        Instantiate(bossPrefab, new Vector3(Mathf.RoundToInt(width / 2),/* 3 * */-height, 0), Quaternion.identity);
     }
     
-    private void MakeStickyGrid()
+    private void MakeStickyGrid(int yOffset = 0)
     {
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                Instantiate(leftRightStickyPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                Instantiate(upDownStickyPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                Instantiate(leftRightStickyPrefab, new Vector3(x, y + yOffset, 0), Quaternion.identity);
+                Instantiate(upDownStickyPrefab, new Vector3(x, y + yOffset, 0), Quaternion.identity);
             }
         }
     }
@@ -50,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
     // At each step, choose a random straight length, and a random x between 0 and width.
     // Then build path straight from where you are random length units long, and then left or right to the random x.
     // If you are within say 5 units from the end, just build a straight path to the end.
-    private void MakePath()
+    private void MakePath(int yOffset = 0)
     {
         int x = Mathf.RoundToInt(width / 2);
         int y = 0;
@@ -63,7 +89,7 @@ public class LevelGenerator : MonoBehaviour
             // Build straight part
             for (int i = y; i < y + randomLength; i++)
             {
-                Instantiate(upDownPrefab, new Vector3(x, i, 0), Quaternion.identity);
+                Instantiate(upDownPrefab, new Vector3(x, i + yOffset, 0), Quaternion.identity);
 
             }
             
@@ -74,14 +100,14 @@ public class LevelGenerator : MonoBehaviour
             {
                 for (int j = randomX; j < x; j++)
                 {
-                    Instantiate(leftRightPrefab, new Vector3(j, y, 0), Quaternion.identity);
+                    Instantiate(leftRightPrefab, new Vector3(j, y + yOffset, 0), Quaternion.identity);
                 }
             }
             else if (randomX > x)
             {
                 for (int k = x; k < randomX; k++)
                 {
-                    Instantiate(leftRightPrefab, new Vector3(k, y, 0), Quaternion.identity);
+                    Instantiate(leftRightPrefab, new Vector3(k, y + yOffset, 0), Quaternion.identity);
                 }
             }
 
@@ -91,18 +117,18 @@ public class LevelGenerator : MonoBehaviour
         // Build last 5 or less straight pieces
         for (int n = y; n < height; n++)
         {
-            Instantiate(upDownPrefab, new Vector3(x, n, 0), Quaternion.identity);
+            Instantiate(upDownPrefab, new Vector3(x, n + yOffset, 0), Quaternion.identity);
         }
     }
 
-    private void SprinkleWithSpiders(int numberOfSpiders)
+    private void SprinkleWithSpiders(int numberOfSpiders, int yOffset = 0)
     {
         for (int i = 1; i <= numberOfSpiders; i++)
         {
             int x = Random.Range(0, width);
             int y = i * Mathf.FloorToInt(height / numberOfSpiders);
 
-            Instantiate(spiderPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            Instantiate(spiderPrefab, new Vector3(x, y + yOffset, 0), Quaternion.identity);
         }
     }
 }

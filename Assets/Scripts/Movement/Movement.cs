@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,13 +12,13 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask webLayer;
     private LevelGenerator levelGenerator;
-    private HUDManager hudManager;
+
+    public static event Action onBossLevel;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         levelGenerator = FindObjectOfType<LevelGenerator>();
-        hudManager = FindObjectOfType<HUDManager>();
 
         // Start at midpoint on the bottom for now
         transform.position = new Vector3(Mathf.RoundToInt(levelGenerator.width / 2), 0, 0);
@@ -77,13 +78,19 @@ public class Movement : MonoBehaviour
 
         if (transform.position.y >= levelGenerator.height)
         {
-            Win();
+            GoToBossLevel();
         }
     }
 
-    private void Win()
+    private void GoToBossLevel()
     {
-        Debug.Log("WIN!! Score: " + Mathf.RoundToInt(100 * (hudManager.spidersKilled + 1) / hudManager.timer));
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Warp to top of web
+        transform.position = new Vector3(
+            Mathf.RoundToInt(levelGenerator.width / 2),
+            (/*3 * */-levelGenerator.height) - 5,
+            0);
+
+        // turns on boss health hud in hudManager
+        onBossLevel?.Invoke();
     }
 }

@@ -6,15 +6,11 @@ public class AAAAAA
 
     High score screen. Make it online?
 
-    Basic HUD
-
     Death screen
-    
-    Win screen
-    
-    Make final level center of web background
-    Make final boss spider
-
+        
+    Fix Boss spider movement
+        Make spider bigger, want him to block the whole width and chase you downwards.
+        Have him zigzag back and forth while moving down and shooting randomly.
 
 
 

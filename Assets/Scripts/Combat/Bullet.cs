@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     private Shooter shooter;
 
     public static event Action onSpiderKilled;
+    public static event Action onHitBoss;
 
     private void Awake()
     {
@@ -61,6 +62,18 @@ public class Bullet : MonoBehaviour
             // Kill spider
             Destroy(collision.gameObject);
             onSpiderKilled?.Invoke();
+
+            // Put back in pool
+            lifetime = 1.5f;
+            launched = false;
+            gameObject.SetActive(false);
+            transform.position += Vector3.down * 200;
+            shooter.pooledBullets.Add(gameObject);
+        }
+        else if (collision.CompareTag("Boss"))
+        {
+            // Hurt boss spider
+            onHitBoss?.Invoke();
 
             // Put back in pool
             lifetime = 1.5f;

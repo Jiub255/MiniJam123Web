@@ -20,6 +20,7 @@ public class Shooter : MonoBehaviour
             instance.SetActive(false);
             pooledBullets.Add(instance);
         }
+        //Debug.Log("Populated pool");
     }
 
     private void Update()

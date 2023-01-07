@@ -1,22 +1,20 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class EnemyShoot : MonoBehaviour
+public class BossShoot : MonoBehaviour
 {
     private Transform player;
 
     [SerializeField]
-    private float shootTimerLength = 2f;
+    private float shootTimerLength = 3f;
     private float timer = 0f;
 
-    [SerializeField]
-    private float shootInnerRadius = 5f;
     [SerializeField]
     private float shootOuterRadius = 9f;
 
     [SerializeField]
-    private GameObject venomPrefab;
-
+    private GameObject bossVenomPrefab;
 
     private void Awake()
     {
@@ -31,7 +29,7 @@ public class EnemyShoot : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (distance > shootInnerRadius && distance < shootOuterRadius && timer > shootTimerLength)
+        if (distance > 0.5f && distance < shootOuterRadius && timer > shootTimerLength)
         {
             timer = 0f;
             Shoot();
@@ -40,8 +38,8 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject venom = Instantiate(venomPrefab);
-        venom.transform.position = transform.position;
-        venom.gameObject.GetComponent<Venom>().Launch(player.position);
+        GameObject bossVenom = Instantiate(bossVenomPrefab);
+        bossVenom.transform.position = transform.position;
+        bossVenom.gameObject.GetComponent<Venom>().Launch(player.position);
     }
 }
