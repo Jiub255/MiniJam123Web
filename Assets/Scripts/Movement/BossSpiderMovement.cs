@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,17 +14,22 @@ public class BossSpiderMovement : MonoBehaviour
     private bool moving = false;
     private Transform player;
     private Rigidbody2D rb;
+    private Animator animator;
     private LevelGenerator levelGenerator;
 
-    private Animator animator;
+    public static event Action<string> onDeath;
+    private bool playerAlive = true;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         levelGenerator = FindObjectOfType<LevelGenerator>();
         chaseRadius = levelGenerator.height;
-        animator = GetComponent<Animator>();
+
+        playerAlive = true;
     }
 
     private void Update()
@@ -34,6 +40,26 @@ public class BossSpiderMovement : MonoBehaviour
         {
             StartCoroutine(MoveDirection(Vector3.down));
         }
+
+        if (playerAlive)
+            CheckForPlayer();
+    }
+
+    private void CheckForPlayer()
+    {
+        if (player.position.y > transform.position.y - 6.5f &&
+            player.position.y < transform.position.y + 2f)
+        {
+            playerAlive = false;
+            KillPlayer();
+        }
+    }
+
+    private void KillPlayer()
+    {
+        Debug.Log("Killed by Boss Spider");
+
+        onDeath?.Invoke("Killed by Boss Spider");
     }
 
     private IEnumerator MoveDirection(Vector3 direction)

@@ -63,7 +63,7 @@ public class LevelGenerator : MonoBehaviour
 
         // Boss Level
         MakeStickyGrid(height * -4);
-        SprinkleWithSpiders(bossNumberOfSpiders, height * -4);
+        SprinkleWithSpiders(bossNumberOfSpiders, height * -4, 0.75f);
 
         for (int i = 0; i < numberOfPaths; i++)
         {
@@ -152,12 +152,12 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void SprinkleWithSpiders(int numberOfSpiders, int yOffset = 0)
+    private void SprinkleWithSpiders(int numberOfSpiders, int yOffset = 0, float bufferZoneMultiplier = 1f)
     {
         for (int i = 1; i <= numberOfSpiders; i++)
         {
             int x = Random.Range(0, width);
-            int y = i * Mathf.FloorToInt(height / numberOfSpiders);
+            int y = i * Mathf.FloorToInt(Mathf.RoundToInt(bufferZoneMultiplier * height) / numberOfSpiders);
 
             Instantiate(spiderPrefab, new Vector3(x, y + yOffset, 0), Quaternion.identity);
         }

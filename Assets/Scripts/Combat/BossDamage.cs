@@ -7,6 +7,8 @@ public class BossDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Collided with " + collision.name);
+
         if (collision.CompareTag("Player"))
         {
             KillPlayer();

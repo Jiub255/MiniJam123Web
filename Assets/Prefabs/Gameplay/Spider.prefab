@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 194055301421532583}
   - component: {fileID: 5783848055873535926}
   - component: {fileID: 2485312763761172409}
-  - component: {fileID: 2485312763761172408}
   - component: {fileID: 2450637894673595265}
   m_Layer: 6
   m_Name: Spider
@@ -193,18 +192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDuration: 0.3
   chaseRadius: 10
---- !u!114 &2485312763761172408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2485312763761172411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f98d017e94cf4747ae8b86df0a58563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2450637894673595265
 MonoBehaviour:
   m_ObjectHideFlags: 0

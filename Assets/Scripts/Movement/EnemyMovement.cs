@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +16,16 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    public static event Action<string> onDeath;
+    private bool playerAlive = true;
+
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
-   
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+       
+        playerAlive = true;
     }
 
     private void Update()
@@ -54,10 +59,30 @@ public class EnemyMovement : MonoBehaviour
                 possibleDirections.Add(Vector3.down);
             }
 
-            int randomInt = Random.Range(0, possibleDirections.Count);
+            int randomInt = UnityEngine.Random.Range(0, possibleDirections.Count);
 
             StartCoroutine(MoveDirection(possibleDirections[randomInt]));
         }
+
+        if (playerAlive)
+            CheckForPlayer();
+    }
+
+    private void CheckForPlayer()
+    {
+        if (Mathf.Abs(player.position.y - transform.position.y) < 0.5f && 
+            Mathf.Abs(player.position.x - transform.position.x) < 0.5f)
+        {
+            playerAlive = false;
+            KillPlayer();
+        }
+    }
+
+    private void KillPlayer()
+    {
+        Debug.Log("Killed by Spider");
+
+        onDeath?.Invoke("Killed by Spider");
     }
 
     private IEnumerator MoveDirection(Vector3 direction)

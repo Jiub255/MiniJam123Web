@@ -55,7 +55,8 @@ public class HUDManager : MonoBehaviour
 		BossHealth.onWin += OpenWinScreen;
 		Movement.onDeath += OpenDeathScreen;
 		Venom.onDeath += OpenDeathScreen;
-		EnemyDamage.onDeath += OpenDeathScreen;
+		EnemyMovement.onDeath += OpenDeathScreen;
+		BossSpiderMovement.onDeath += OpenDeathScreen;
     }
 
     private void OnDisable()
@@ -65,10 +66,11 @@ public class HUDManager : MonoBehaviour
 		BossHealth.onWin -= OpenWinScreen;
 		Movement.onDeath -= OpenDeathScreen;
 		Venom.onDeath -= OpenDeathScreen;
-		EnemyDamage.onDeath -= OpenDeathScreen;
+		EnemyMovement.onDeath -= OpenDeathScreen;
+		BossSpiderMovement.onDeath -= OpenDeathScreen;
 	}
 
-    private void Start()
+	private void Start()
     {
 		healthBarImage.fillAmount = 1f;
     }
