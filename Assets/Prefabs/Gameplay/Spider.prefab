@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2485312762608516732}
   - component: {fileID: 2485312762608516707}
+  - component: {fileID: 8959106411141105366}
   m_Layer: 6
-  m_Name: Sprite
+  m_Name: Spider Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8959106411141105366
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485312762608516733}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f231b38ca2777ee40a3c5bb9c92ef0d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2485312763761172411
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3c977ee9e4354469a698302ca3fa90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootTimerLength: 7
-  shootInnerRadius: 5
+  shootTimerLength: 4
+  shootInnerRadius: 3
   shootOuterRadius: 9
   venomPrefab: {fileID: 6986417533756289866, guid: 3e467353d5a7733408649f847424165b, type: 3}

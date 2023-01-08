@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask webLayer;
     private LevelGenerator levelGenerator;
+    private Animator animator;
 
     public static event Action onBossLevel;
     public static event Action<string> onDeath;
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         levelGenerator = FindObjectOfType<LevelGenerator>();
+        animator = GetComponentInChildren<Animator>();
 
         // Start at midpoint on the bottom for now
         transform.position = new Vector3(Mathf.RoundToInt(levelGenerator.width / 2), 0, 0);
@@ -31,24 +33,45 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 StartCoroutine(MoveDirection(Vector3.up));
+               // if (animator.GetFloat("LastHoriz") > 0.5f || animator.GetFloat("LastHoriz") < -0.5f)
+                    animator.SetFloat("LastHoriz", 0);
+               // if (animator.GetFloat("LastVert") < 0.5f)
+                    animator.SetFloat("LastVert", 1);
             }
             else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 StartCoroutine(MoveDirection(Vector3.down));
+               // if (animator.GetFloat("LastHoriz") > 0.5f || animator.GetFloat("LastHoriz") < -0.5f)
+                    animator.SetFloat("LastHoriz", 0);
+               // if (animator.GetFloat("LastVert") > -0.5f)
+                    animator.SetFloat("LastVert", -1);
             }
             else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 StartCoroutine(MoveDirection(Vector3.left));
+               // if (animator.GetFloat("LastHoriz") > -0.5f)
+                    animator.SetFloat("LastHoriz", -1);
+               // if (animator.GetFloat("LastVert") > 0.5f || animator.GetFloat("LastVert") < -0.5f)
+                    animator.SetFloat("LastVert", 0);
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 StartCoroutine(MoveDirection(Vector3.right));
+                //if (animator.GetFloat("LastHoriz") < 0.5f)
+                    animator.SetFloat("LastHoriz", 1);
+               // if (animator.GetFloat("LastVert") > 0.5f || animator.GetFloat("LastVert") < -0.5f)
+                    animator.SetFloat("LastVert", 0);
+            }
+            else
+            {
+                animator.SetBool("Moving", false);
             }
         }
     }
 
     private IEnumerator MoveDirection(Vector3 direction)
     {
+        animator.SetBool("Moving", true);
         moving = true;
 
         float elapsedTime = 0f;

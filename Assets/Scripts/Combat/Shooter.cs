@@ -47,12 +47,12 @@ public class Shooter : MonoBehaviour
             bullet = pooledBullets[0];
             pooledBullets.RemoveAt(0);
             bullet.SetActive(true);
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + Vector3.up * 0.4f;
         }
         else
         {
             bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = transform.position;
+            bullet.transform.position = transform.position + Vector3.up * 0.4f;
         }
 
         // Shoot bullet. Deactivates itself onCollision or after timer and re-adds itself to pool.

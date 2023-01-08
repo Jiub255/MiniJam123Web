@@ -42,6 +42,25 @@ public class LevelGenerator : MonoBehaviour
             MakePath();
         }
 
+        // Make safe zone on bottom to start on
+        for (int x = 0; x < width; x++)
+        {
+            Instantiate(leftRightPrefab, new Vector3(x, -2, 0), Quaternion.identity);
+            Instantiate(upDownPrefab, new Vector3(x, -2, 0), Quaternion.identity);
+
+            Instantiate(leftRightPrefab, new Vector3(x, -1, 0), Quaternion.identity);
+            Instantiate(upDownPrefab, new Vector3(x, -1, 0), Quaternion.identity);
+
+            Instantiate(leftRightPrefab, new Vector3(x, 0, 0), Quaternion.identity);
+            Instantiate(upDownPrefab, new Vector3(x, 0, 0), Quaternion.identity);
+
+            Instantiate(leftRightPrefab, new Vector3(x, 1, 0), Quaternion.identity);
+            Instantiate(upDownPrefab, new Vector3(x, 1, 0), Quaternion.identity);
+
+            Instantiate(leftRightPrefab, new Vector3(x, 2, 0), Quaternion.identity);
+        }
+
+
         // Boss Level
         MakeStickyGrid(height * -4);
         SprinkleWithSpiders(bossNumberOfSpiders, height * -4);

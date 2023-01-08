@@ -13,9 +13,12 @@ public class EnemyMovement : MonoBehaviour
     private bool moving;
     private Transform player;
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+   
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -60,6 +63,8 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator MoveDirection(Vector3 direction)
     {
         moving = true;
+        if (direction != Vector3.zero)
+            animator.SetBool("Moving", true);
 
         float elapsedTime = 0f;
 
@@ -76,5 +81,7 @@ public class EnemyMovement : MonoBehaviour
         transform.position = targetPosition;
 
         moving = false;
+        if (direction != Vector3.zero)
+            animator.SetBool("Moving", false);
     }
 }

@@ -15,12 +15,15 @@ public class BossSpiderMovement : MonoBehaviour
     private Rigidbody2D rb;
     private LevelGenerator levelGenerator;
 
+    private Animator animator;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         levelGenerator = FindObjectOfType<LevelGenerator>();
         chaseRadius = levelGenerator.height;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -31,33 +34,13 @@ public class BossSpiderMovement : MonoBehaviour
         {
             StartCoroutine(MoveDirection(Vector3.down));
         }
-
-
-
-/*        
-                if (!moving && distance > 0.5f && distance < chaseRadius)
-        {
-            List<Vector2> possibleDirections = new List<Vector2>();
-            possibleDirections.Add(Vector2.zero);
-            possibleDirections.Add(Vector2.down);
-
-            if (transform.position.x >= player.position.x)
-            {
-                possibleDirections.Add(Vector2.right);
-            }
-            else if (transform.position.x <= player.position.x)
-            {
-                possibleDirections.Add(Vector2.left);
-            }
-
-            int randomInt = Random.Range(0, possibleDirections.Count);
-            StartCoroutine(MoveDirection(possibleDirections[randomInt]));
-        }*/
     }
 
     private IEnumerator MoveDirection(Vector3 direction)
     {
         moving = true;
+        if (direction != Vector3.zero)
+            animator.SetBool("Moving", true);
 
         float elapsedTime = 0f;
 
@@ -74,5 +57,7 @@ public class BossSpiderMovement : MonoBehaviour
         transform.position = targetPosition;
 
         moving = false;
+        if (direction != Vector3.zero)
+            animator.SetBool("Moving", false);
     }
 }
