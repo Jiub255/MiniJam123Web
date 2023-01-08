@@ -6,14 +6,13 @@ public class AAAAAA
 
     High score screen. Make it online?
 
-    Death screen
-        
-    Fix Boss spider movement
-        Make spider bigger, want him to block the whole width and chase you downwards.
-        Have him zigzag back and forth while moving down and shooting randomly.
+    Make everything look better, add animations, make UI better.
+        Make everything yourself, why not?
 
-
-
+    Add intro scene with spider boss stealing the ground.
+        Boss Spider is jealous of us humans, walking around on the ground, putting our feet wherever we want without worry.
+        So he wants us to suffer like the spiders, and have to think about every step, whether it's sticky web or not.
+        So naturally he steals the ground.
 
 
     ---------------------------------------------------------------------------
@@ -38,7 +37,7 @@ public class AAAAAA
         Have separate center of web background for big boss spider fight, and different movement maybe?
 
 
-    Score is spidersKilled/timeToComplete
+    Score is ~ spidersKilled/timeToComplete
 
 
 

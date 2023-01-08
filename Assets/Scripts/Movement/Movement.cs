@@ -88,7 +88,7 @@ public class Movement : MonoBehaviour
         // Warp to top of web
         transform.position = new Vector3(
             Mathf.RoundToInt(levelGenerator.width / 2),
-            (-levelGenerator.height) - 5,
+            (-3 * levelGenerator.height) - 5,
             0);
 
         // turns on boss health hud in hudManager

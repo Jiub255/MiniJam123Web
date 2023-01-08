@@ -609,7 +609,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3018868, g: 0.07394968, b: 0.041295845, a: 0}
+  m_BackGroundColor: {r: 0.21698111, g: 0.0631776, b: 0.041963324, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -880,14 +880,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 15
-  height: 25
+  height: 40
   numberOfPaths: 8
   minPathLength: 3
   maxPathLength: 5
-  numberOfSpiders: 2
-  bossNumberOfSpiders: 2
+  numberOfSpiders: 10
+  bossNumberOfSpiders: 4
   spiderPrefab: {fileID: 2485312763761172411, guid: b9196aba9f8ef394d99d03eb206a13e2, type: 3}
-  bossPrefab: {fileID: 4751554307701497204, guid: d8cd3228f7d509445b40122fd66b1f04, type: 3}
+  bossPrefab: {fileID: 8130588858937400529, guid: 837d4a450facda543ba309f643ba782e, type: 3}
   upDownPrefab: {fileID: 340503869498070358, guid: ed546bd93a65ca04c88c7dc92df889c3, type: 3}
   upDownStickyPrefab: {fileID: 8160058661330575097, guid: a44f18cd5f3f9f746a02a00b3c10654e, type: 3}
   leftRightPrefab: {fileID: 6212890431303990449, guid: 9b7edd63b1f4b824b9ae9cec39190e2f, type: 3}

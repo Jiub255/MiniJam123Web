@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossSpiderMovement : MonoBehaviour
 {
     [SerializeField]
-    private float moveDuration = 0.3f;
+    private float moveDuration = 1f;
 
     [SerializeField]
     private float chaseRadius = 20f;
@@ -21,7 +21,6 @@ public class BossSpiderMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         levelGenerator = FindObjectOfType<LevelGenerator>();
         chaseRadius = levelGenerator.height;
-        Debug.Log("chaseRadius == " + chaseRadius.ToString());
     }
 
     private void Update()
@@ -30,12 +29,13 @@ public class BossSpiderMovement : MonoBehaviour
         
         if (!moving && distance < chaseRadius)
         {
-
+            StartCoroutine(MoveDirection(Vector3.down));
         }
 
+
+
 /*        
-        
-        if (!moving && distance > 0.5f && distance < chaseRadius)
+                if (!moving && distance > 0.5f && distance < chaseRadius)
         {
             List<Vector2> possibleDirections = new List<Vector2>();
             possibleDirections.Add(Vector2.zero);
